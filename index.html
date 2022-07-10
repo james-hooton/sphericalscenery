@@ -1,12 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spherical Scenery</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spherical Scenery</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="scripts.js"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css' rel='stylesheet' />
 </head>
+
 <body>
-  <script src="//cdn.delight-vr.com/latest/dl8enabler.js" async></script><div style="padding:56.25% 0 0 0;position:relative;"><iframe width="100%" height="100%" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameBorder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="vr; autoplay; fullscreen" src="https://players.delight-vr.com/player/-N47r-wU27OcEN3E8iAW"></iframe></div>
+    <header>
+        <h1>Spherical Scenery °</h1>
+        <hr>
+    </header>
+    <main>
+        <h2 id="greetings"></h2>
+        <div id='map' style='width: 100%; height: 600px;'></div>
+        <script>
+            mapboxgl.accessToken = 'pk.eyJ1IjoiamFtZXNob290b24iLCJhIjoiY2w0bXV4YzdwMGhkNDNjcXVyNjFkaTR5MSJ9.reEcwsRBSSGmbmw9AI6jpQ';
+            var map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/jameshooton/cl4mv01dl004s14mtaf386zsy'
+            });
+
+            // Add geolocate control to the map.
+            map.addControl(
+                new mapboxgl.GeolocateControl({
+                    positionOptions: {
+                        enableHighAccuracy: true
+                    },
+                    // When active the map will receive updates to the device's location as it changes.
+                    trackUserLocation: true,
+                    // Draw an arrow next to the location dot to indicate which direction the device is heading.
+                    showUserHeading: true
+                })
+            );
+        </script>
+    </main>
 </body>
 </html>
