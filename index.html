@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spherical Scenery</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.1.0/build/pure-min.css" integrity="sha384-yHIFVG6ClnONEA5yB5DJXfW2/KC173DIQrYoZMEtBvGzmf0PKiGyNEqe9N6BNDBH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.1.0/build/grids-responsive-min.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/base-min.css">
     <link rel="stylesheet" href="style.css">
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css' rel='stylesheet' />
@@ -23,8 +26,71 @@
             mapboxgl.accessToken = 'pk.eyJ1IjoiamFtZXNob290b24iLCJhIjoiY2w0bXV4YzdwMGhkNDNjcXVyNjFkaTR5MSJ9.reEcwsRBSSGmbmw9AI6jpQ';
             var map = new mapboxgl.Map({
                 container: 'map',
-                style: 'mapbox://styles/jameshooton/cl4mv01dl004s14mtaf386zsy'
+                style: 'mapbox://styles/jameshooton/cl4mv01dl004s14mtaf386zsy',
+                /*center: [-96, 37.8],*/
+                /*zoom: 3*/
             });
+
+            const geojson = {
+            type: 'FeatureCollection',
+            features: [
+                {
+                type: 'Feature',
+                geometry: {
+                    type: 'Point',
+                    coordinates: [-4.415533, 53.135312]
+                },
+                properties: {
+                    title: 'Llanddwyn Lighthouse',
+                    description: 'A lighthouse at the furthest point of Llandwyn Island',
+                    button: '<a class="pure-button" href="videos.html">Take me there</a>'
+                }
+            },
+                {
+                type: 'Feature',
+                geometry: {
+                    type: 'Point',
+                    coordinates: [-2.7168318262727267, 53.50756095530985]
+                },
+                properties: {
+                    title: 'Billinge Beacon',
+                    description: 'The highest point in Merseyside. Views streching across Merseyside towards North Wales. You can easily see Anglesey on a clear day.',
+                    button: '<a class="pure-button" href="videos.html">Take me there</a>'
+                }
+            },
+            {
+                type: 'Feature',
+                geometry: {
+                    type: 'Point',
+                    coordinates: [-4.413534, 53.134616]
+                },
+                properties: {
+                    title: "Pilot's Cove",
+                    description: "A tidal break between Pilot's Cove and Porth Twr-back",
+                    button: '<a class="pure-button" href="videos.html">Take me there</a>'
+                   }
+                }]
+            };
+
+            // add markers to map
+            for (const feature of geojson.features) {
+                // create a HTML element for each feature
+                const el = document.createElement('div');
+                el.className = 'marker';
+
+                // make a marker for each feature and add to the map
+                new mapboxgl.Marker(el)
+                    .setLngLat(feature.geometry.coordinates)
+                    .setPopup(
+                        new mapboxgl.Popup({ offset: 25 }) // add popups
+                            .setHTML(
+                                `<h3>${feature.properties.title}</h3
+                                 <p>${feature.properties.description}</p>
+                                 <p>${feature.properties.button}</p>`
+                            )
+                    )
+                    .addTo(map);
+            }
 
             // Add geolocate control to the map.
             map.addControl(
