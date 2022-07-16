@@ -5,9 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spherical Scenery</title>
-    <link rel="stylesheet" href="https://unpkg.com/purecss@2.1.0/build/pure-min.css" integrity="sha384-yHIFVG6ClnONEA5yB5DJXfW2/KC173DIQrYoZMEtBvGzmf0PKiGyNEqe9N6BNDBH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://unpkg.com/purecss@2.1.0/build/grids-responsive-min.css">
-    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/base-min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
     <link rel="stylesheet" href="style.css">
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css' rel='stylesheet' />
@@ -15,23 +13,11 @@
 
 <body>
     <header>
-        <div class="pure-menu pure-menu-horizontal">
-            <a href="#" class="pure-menu-heading pure-menu-link">Spherical Scenery °</a>
-            <ul class="pure-menu-list">
-                <li class="pure-menu-item">
-                    <a href="#" class="pure-menu-link">About</a>
-                </li>
-                <li class="pure-menu-item">
-                    <a href="#" class="pure-menu-link">Scenery</a>
-                </li>
-                <li class="pure-menu-item">
-                    <a href="#" class="pure-menu-link">Contact</a>
-                </li>
-            </ul>
-        </div>
+        <h1><a href="index.html">Spherical Scenery °</a></h1>
+        <hr>
     </header>
     <main>
-        <h2 class="pure-menu-heading" id="demo"></h2>
+        <h2 id="demo"></h2><p>Take in your surroundings. Where are you exploring today?</p>
         <script src="scripts.js"></script>
         <div id='map' style='width: 100%; height: 600px;'></div>
         <script>
@@ -67,7 +53,7 @@
                 properties: {
                     title: 'Billinge Beacon',
                     description: 'The highest point in Merseyside. Views streching across Merseyside towards North Wales. You can easily see Anglesey on a clear day.',
-                    button: '<a class="pure-button" href="videos.html">Take me there</a>'
+                    button: '<a href="videos.html">Take me there</a>'
                 }
             },
             {
@@ -117,6 +103,12 @@
                 })
             );
         </script>
+        <h2>Perfer lists?</h2>
+        <p>Maps get you to places, but lists are useful too</p>
+        <button>List view</button>
     </main>
+    <footer>
+        © Spherical Scenery 2022 | <a href="jameshooton.com">James Hooton Media</a>
+      </footer>
 </body>
 </html>

@@ -4,33 +4,61 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Immersive Viewer</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <title>Llanddwyn Lighthouse</title>
 </head>
 <body>
+  <header>
+    <h1><a href="index.html">Spherical Scenery °</a></h1>
+    <hr>
+    <h2>Llanddwyn Lighthouse</h2>
+  </header>
+  <main>
+    <p>A lighthouse at the furthest point of Llandwyn Island</p>
     <div id="ytplayer"></div>
-
-<script>
-  // Load the IFrame Player API code asynchronously.
-  var tag = document.createElement('script');
-  tag.src = "https://www.youtube.com/player_api";
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-  // Replace the 'ytplayer' element with an <iframe> and
-  // YouTube player after the API code downloads.
-  var player;
-  function onYouTubePlayerAPIReady() {
-    player = new YT.Player('ytplayer', {
-      height: '600',
-      width: '100%',
-      videoId: '8MBHybLb9-M',
-      playerVars: {
-        'color': 'white',
-        'controls': 1,
-        'loop': 1,
+    <script>
+      // Load the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+      tag.src = "https://www.youtube.com/player_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    
+      // Replace the 'ytplayer' element with an <iframe> and
+      // YouTube player after the API code downloads.
+      var player;
+      function onYouTubePlayerAPIReady() {
+        player = new YT.Player('ytplayer', {
+          height: '600',
+          width: '100%',
+          videoId: '8MBHybLb9-M',
+          playerVars: {
+            'color': 'white',
+            'controls': 1,
+            'loop': 1,
+          }
+        });
       }
-    });
-  }
-</script>
+    </script>
+    <section>
+      <h3>Sensory Box</h3>
+      <ul>
+        <li>🌊 Strong sea breeze</li>
+        <li>🏞 Gradual inclines</li>
+        <li>🪨 Uneven surfaces</li>
+      </ul>
+    </section>
+    <section>
+      <h3>Where next?</h3>
+      <p>People who have explored <b>Llanddwyn Lighthouse</b> have also explored:</p>
+      <nav>
+        <a href="#"><b>Billinge Beacon |</b></a>
+        <a href="#"><b>Llanddwyn Island |</b></a>
+        <a href="#"><b>Pistyll Rhaeadr</b></a>
+      </nav>
+    </section>
+  </main>
+  <footer>
+    © Spherical Scenery 2022 | <a href="jameshooton.com">James Hooton Media</a>
+  </footer>
 </body>
 </html>
