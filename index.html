@@ -19,7 +19,7 @@
     <main>
         <h2 id="demo"></h2><p>Take in your surroundings. Where are you exploring today?</p>
         <script src="scripts.js"></script>
-        <div id='map' style='width: 100%; height: 600px;'></div>
+        <div id='map' style='width: 100%; height: 400px;'></div>
         <script>
             mapboxgl.accessToken = 'pk.eyJ1IjoiamFtZXNob290b24iLCJhIjoiY2w0bXV4YzdwMGhkNDNjcXVyNjFkaTR5MSJ9.reEcwsRBSSGmbmw9AI6jpQ';
             var map = new mapboxgl.Map({
@@ -102,8 +102,11 @@
                     showUserHeading: true
                 })
             );
+
+            // Add fullsreen control to the map.
+            map.addControl(new mapboxgl.FullscreenControl());
         </script>
-        <h2>Perfer lists?</h2>
+        <h2>Prefer lists?</h2>
         <p>Maps get you to places, but lists are useful too</p>
         <button>List view</button>
     </main>
