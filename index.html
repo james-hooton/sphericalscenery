@@ -5,10 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spherical Scenery</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
     <link rel="stylesheet" href="style.css">
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="crossorigin=""></script>
+    <link rel="stylesheet" href="Control.FullScreen.css" />
+    <script src="Control.FullScreen.js"></script>
 </head>
 
 <body>
@@ -19,92 +23,73 @@
     <main>
         <h2 id="demo"></h2><p>Take in your surroundings. Where are you exploring today?</p>
         <script src="scripts.js"></script>
-        <div id='map' style='width: 100%; height: 400px;'></div>
+        <div id="map"></div>
         <script>
-            mapboxgl.accessToken = 'pk.eyJ1IjoiamFtZXNob290b24iLCJhIjoiY2w0bXV4YzdwMGhkNDNjcXVyNjFkaTR5MSJ9.reEcwsRBSSGmbmw9AI6jpQ';
-            var map = new mapboxgl.Map({
-                container: 'map',
-                style: 'mapbox://styles/jameshooton/cl4mv01dl004s14mtaf386zsy',
-                /*center: [-96, 37.8],*/
-                /*zoom: 3*/
-            });
+            var map = L.map('map', {
+                fullscreenControl: true,
+                fullscreenControlOptions: { // optional
+                    title:"Enter immersive map view",
+                    titleCancel:"Exit immerisve map view"
+			}
+            }).setView([51.505, -0.09], 13);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '© OpenStreetMap'
+            }).addTo(map);
 
-            const geojson = {
-            type: 'FeatureCollection',
-            features: [
-                {
-                type: 'Feature',
-                geometry: {
-                    type: 'Point',
-                    coordinates: [-4.415533, 53.135312]
-                },
-                properties: {
-                    title: 'Llanddwyn Lighthouse',
-                    description: 'A lighthouse at the furthest point of Llandwyn Island',
-                    button: '<a class="pure-button" href="videos.html">Take me there</a>'
+            function onEachFeature(feature, layer) {
+                // does this feature have a property named popupContent?
+                if (feature.properties && feature.properties.popupContent) {
+                    layer.bindPopup('<h3><a href="'+feature.properties.link+'">'+feature.properties.name+'</a></h3>'+
+                    '<p>'+feature.properties.popupContent+'</p>'+
+                    '<img src="'+feature.properties.image+'" width="100%">');
                 }
-            },
-                {
-                type: 'Feature',
-                geometry: {
-                    type: 'Point',
-                    coordinates: [-2.7168318262727267, 53.50756095530985]
-                },
-                properties: {
-                    title: 'Billinge Beacon',
-                    description: 'The highest point in Merseyside. Views streching across Merseyside towards North Wales. You can easily see Anglesey on a clear day.',
-                    button: '<a href="videos.html">Take me there</a>'
-                }
-            },
-            {
-                type: 'Feature',
-                geometry: {
-                    type: 'Point',
-                    coordinates: [-4.413534, 53.134616]
-                },
-                properties: {
-                    title: "Pilot's Cove",
-                    description: "A tidal break between Pilot's Cove and Porth Twr-back",
-                    button: '<a class="pure-button" href="videos.html">Take me there</a>'
-                   }
-                }]
-            };
-
-            // add markers to map
-            for (const feature of geojson.features) {
-                // create a HTML element for each feature
-                const el = document.createElement('div');
-                el.className = 'marker';
-
-                // make a marker for each feature and add to the map
-                new mapboxgl.Marker(el)
-                    .setLngLat(feature.geometry.coordinates)
-                    .setPopup(
-                        new mapboxgl.Popup({ offset: 25 }) // add popups
-                            .setHTML(
-                                `<h3>${feature.properties.title}</h3
-                                 <p>${feature.properties.description}</p>
-                                 <p>${feature.properties.button}</p>`
-                            )
-                    )
-                    .addTo(map);
             }
 
-            // Add geolocate control to the map.
-            map.addControl(
-                new mapboxgl.GeolocateControl({
-                    positionOptions: {
-                        enableHighAccuracy: true
-                    },
-                    // When active the map will receive updates to the device's location as it changes.
-                    trackUserLocation: true,
-                    // Draw an arrow next to the location dot to indicate which direction the device is heading.
-                    showUserHeading: true
-                })
-            );
+            var geojsonFeature = [{
+                "type": "Feature",
+                "properties": {
+                    "name": "Llanddwyn Lighthouse",
+                    "amenity": "Baseball Stadium",
+                    "popupContent": "A lighthouse at the furthest point of Llandwyn Island",
+                    "image": "",
+                    "link": ""
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-4.415533, 53.135312]
+                }
+            },  {
+                "type": "Feature",
+                "properties": {
+                    "name": "Billinge Beacon",
+                    "amenity": "Baseball Stadium",
+                    "popupContent": "The highest point in Merseyside. Views streching across Merseyside towards North Wales. You can easily see Anglesey on a clear day.",
+                    "image": "thumbnail.jpg",
+                    "link": "videos.html"
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-2.7168318262727267, 53.50756095530985]
+                }
+            },  {
+                "type": "Feature",
+                "properties": {
+                    "name": "Pilot's Cove",
+                    "amenity": "Baseball Stadium",
+                    "popupContent": "A tidal break between Pilot's Cove and Porth Twr-back",
+                    "image": "thumbnail.jpg",
+                    "link": ""
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-4.413534, 53.134616]
+                }
+            }];
 
-            // Add fullsreen control to the map.
-            map.addControl(new mapboxgl.FullscreenControl());
+            L.geoJSON(geojsonFeature, {
+                onEachFeature: onEachFeature
+            }).addTo(map);
         </script>
         <h2>Prefer lists?</h2>
         <p>Maps get you to places, but lists are useful too</p>
