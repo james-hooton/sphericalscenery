@@ -23,7 +23,7 @@
     <main>
         <h2 id="demo"></h2><p>Take in your surroundings. Where are you exploring today?</p>
         <script src="scripts.js"></script>
-        <div id="map"></div>
+        <div id="map" class="map shadow rounded"></div>
         <script>
             var map = L.map('map', {
                 fullscreenControl: true,
@@ -31,7 +31,7 @@
                     title:"Enter immersive map view",
                     titleCancel:"Exit immerisve map view"
 			}
-            }).setView([51.505, -0.09], 13);
+            }).setView([53.507970, -2.718769], 13);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
                 attribution: '© OpenStreetMap'
@@ -49,41 +49,119 @@
             var geojsonFeature = [{
                 "type": "Feature",
                 "properties": {
-                    "name": "Llanddwyn Lighthouse",
-                    "amenity": "Baseball Stadium",
-                    "popupContent": "A lighthouse at the furthest point of Llandwyn Island",
-                    "image": "",
-                    "link": ""
+                    "name": "Twr Mawr Lighthouse",
+                    "category": "Significant Landmark",
+                    "popupContent": "Tŵr Mawr lighthouse (meaning 'great tower' in Welsh), on Ynys Llanddwyn on Anglesey, Wales, marks the western entrance to the Menai Strait.",
+                    "image": "assets/Twr-Mawr-Lighthouse-Thumnail.jpg",
+                    "link": "llanddwynlighthouse.html"
                 },
                 "geometry": {
                     "type": "Point",
-                    "coordinates": [-4.415533, 53.135312]
+                    "coordinates": [-4.415388, 53.135452]
                 }
             },  {
                 "type": "Feature",
                 "properties": {
                     "name": "Billinge Beacon",
-                    "amenity": "Baseball Stadium",
-                    "popupContent": "The highest point in Merseyside. Views streching across Merseyside towards North Wales. You can easily see Anglesey on a clear day.",
-                    "image": "thumbnail.jpg",
-                    "link": "videos.html"
+                    "category": "Historical Landmark",
+                    "popupContent": "The highest point in Merseyside. Views streching across Merseyside towards North Wales. You can easily see Anglesey on a clear day. The beacon itself was used for aircraft observation during and after the war.",
+                    "image": "assets/Billinge-Beacon-Thumbnail.jpg",
+                    "link": "billingebeacon.html"
                 },
                 "geometry": {
                     "type": "Point",
-                    "coordinates": [-2.7168318262727267, 53.50756095530985]
+                    "coordinates": [-2.716925, 53.507560]
                 }
             },  {
                 "type": "Feature",
                 "properties": {
-                    "name": "Pilot's Cove",
-                    "amenity": "Baseball Stadium",
-                    "popupContent": "A tidal break between Pilot's Cove and Porth Twr-back",
-                    "image": "thumbnail.jpg",
+                    "name": "Billinge Hill",
+                    "category": "Public Land",
+                    "popupContent": "With a maximum elevation of 179m (587 ft), it is the highest point of Merseyside. Billinge Hill was used by the Royal Observer Corps, and there was a bunker at the site, 60 yards (55 metres) west of and below the beacon.",
+                    "image": "assets/Billinge-Hill-Thumbnail.jpg",
                     "link": ""
                 },
                 "geometry": {
                     "type": "Point",
-                    "coordinates": [-4.413534, 53.134616]
+                    "coordinates": [-2.717734, 53.508536]
+                }
+            },  {
+                "type": "Feature",
+                "properties": {
+                    "name": "St Dwynwen’s Cross",
+                    "category": "Historical Landmark",
+                    "popupContent": "On the highest point of Llanddwyn Island stands the huge St Dwynwen's cross. Dwnwen is the Welsh patron saint of lovers.",
+                    "image": "assets/St-Dwynwens-Cross-Thumbnail.jpg",
+                    "link": ""
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-4.414895, 53.136291]
+                }
+            },  {
+                "type": "Feature",
+                "properties": {
+                    "name": "Eglwys Santes Dwynwen",
+                    "category": "Historical Landmark",
+                    "popupContent": "Dwynwen withdrew to a small tidal island off the southwest coast of Anglesey. There she built a church; which became known as Llanddwyn ('Church of Dwynwen'). Its remains can still be seen on Ynys Llanddwyn.",
+                    "image": "assets/Eglwys-Santes-Dwynwen-Thumnail.jpg",
+                    "link": ""
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-4.412663, 53.137226]
+                }
+            },  {
+                "type": "Feature",
+                "properties": {
+                    "name": "Penrhos Beach",
+                    "category": "Public Beach",
+                    "popupContent": "Can be accessed by walking through Newborough Forest, which brings you out on top of the steep sandunes with views of Ynys Llanddwyn, Llanddwyn Beach and accross the Menai Strait to Snowdonia.",
+                    "image": "assets/Penrhos-Beach-Thumbnail.jpg",
+                    "link": ""
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-4.415528, 53.158083]
+                }
+            },  {
+                "type": "Feature",
+                "properties": {
+                    "name": "Llanddwyn Beach",
+                    "category": "Public Beach",
+                    "popupContent": "Renowned as one of the finest beaches in Britain, Llanddwyn is backed by, impressive sand dunes, and boasts spectacular views of Snowdonia National Park, Caemarfon and the Llyn Peninsula.",
+                    "image": "assets/Llanddwyn-Beach-Thumbnail.jpg",
+                    "link": ""
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-4.402422, 53.145494]
+                }
+            },  {
+                "type": "Feature",
+                "properties": {
+                    "name": "Newborough Forest",
+                    "category": "Nature Reserve",
+                    "popupContent": "Newborough Forest is a forest to the west of Newborough, Anglesey, North Wales. It is one of the most important red squirrel conservation sites in the United Kingdom. It can be accessed from the Carpark or the steep sandunes on the beach.",
+                    "image": "assets/Newborough-Forest-Thumnail.jpg",
+                    "link": ""
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-4.402471, 53.146009]
+                }
+            },  {
+                "type": "Feature",
+                "properties": {
+                    "name": "Tŵr Bach Lighthouse",
+                    "category": "Significant Landmark",
+                    "popupContent": "Twr Bach Lighthouse (meaning 'little tower' in Welsh) is situated on a small island next to Llanddwyn Island which is joined by a small causeway. It is next to the old lifeboat station which remained in service until 1903.",
+                    "image": "assets/Twr-Bach-Lighthouse-Thumnail.jpg",
+                    "link": ""
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-4.413593, 53.134596]
                 }
             }];
 
@@ -93,7 +171,7 @@
         </script>
         <h2>Prefer lists?</h2>
         <p>Maps get you to places, but lists are useful too</p>
-        <button>List view</button>
+        <button type="button" onclick="window.location.href='listview.html'">List view</button>
     </main>
     <footer>
         © Spherical Scenery 2022 | <a href="jameshooton.com">James Hooton Media</a>

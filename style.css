@@ -1,1 +1,45 @@
-#map { height: 400px; }
+header h1 {
+  font-weight: bold;
+}
+
+.map { height: 400px; }
+
+.map img {border-radius: 10px;}
+
+.chip {
+    margin: 5px;
+    display: inline-block;
+    padding: 0 25px;
+    height: 50px;
+    font-size: 16px;
+    line-height: 50px;
+    border-radius: 25px;
+    background-color: #f1f1f1;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .reccomended img{
+    border-radius: 10px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .reccomended img:hover{
+    border-radius: 10px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.63);
+    transition: 1s;
+  }
+
+  .reccomended figcaption {
+    font-weight: bold;
+    text-align: center;
+  }
+
+/*--------Generic Classes--------*/
+
+.shadow {box-shadow: 0px 20px 20px -10px #4e4e4e;}
+
+.search {display: inline-block;}
+
+.search button {background-color: #0076d1; color: white;}
+
+.rounded {border-radius: 10px;}
