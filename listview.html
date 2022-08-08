@@ -60,10 +60,11 @@
         flex-wrap: wrap;
         justify-content: center;
         gap: 10px;
+        padding-inline-start: 0px;
     }
 
     .image-gallery > li {
-        flex-basis: 350px; /* width: 350px; */
+        flex-basis: 250px; /* width: 350px; */
         list-style: none;
     }
 
@@ -75,3 +76,53 @@
         border-radius: 5px;
     }
   </style>
+
+  <div class="container">
+    <figure>
+        <img src="assets/Billinge-Beacon-Thumbnail.jpg" alt="" />
+        <figcaption>Hello</figcaption>
+    </figure>
+    <figure>
+        <img src="assets/Billinge-Beacon-Thumbnail.jpg" alt="" />
+        <figcaption>Hello</figcaption>
+    </figure>
+    <figure>
+        <img src="assets/Billinge-Beacon-Thumbnail.jpg" alt="" />
+        <figcaption>Hello</figcaption>
+    </figure>
+    <figure>
+        <img src="assets/Billinge-Beacon-Thumbnail.jpg" alt="" />
+        <figcaption>Hello</figcaption>
+    </figure>
+    <figure>
+        <img src="assets/Billinge-Beacon-Thumbnail.jpg" alt="" />
+        <figcaption>Hello</figcaption>
+    </figure>
+    <figure>
+        <img src="assets/Billinge-Beacon-Thumbnail.jpg" alt="" />
+        <figcaption>Hello</figcaption>
+    </figure>
+</div>
+
+<style>
+    .container {
+        display: flex;
+        max-width: 1200px;
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .container figure {
+        width: 250px;
+        height: 100%;
+        object-fit: cover;
+        padding: 5px;
+        margin: 0px;
+        text-align: center;
+    }
+
+    .container figure img {
+        border-radius: 5px;
+    }
+</style>
