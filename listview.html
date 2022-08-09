@@ -20,9 +20,10 @@
       <button class="search" type="submit">Submit</button>
    </section>
    <section>
-      <article>
+      <article class="listview">
           <h3>Billinge Beacon</h3>
           <p>The highest point in Merseyside. Views streching across Merseyside towards North Wales. You can easily see Anglesey on a clear day.</p>
+          <img src="assets/Billinge-Beacon-Thumbnail.jpg" alt="">
           <button type="button" onclick="window.location.href='#'">Take me there</button>
       </article>
       <article>
@@ -31,98 +32,3 @@
           <button type="button" onclick="window.location.href='#'">Take me there</button>
       </article>
   </section>
-
-  <section>
-      <article>
-        <ul class="image-gallery">
-            <li>
-                <img src="assets/Billinge-Beacon-Thumbnail.jpg" alt="" />
-            </li>
-            <li>
-                <img src="assets/Billinge-Beacon-Thumbnail.jpg" alt="" />
-            </li>
-            <li>
-                <img src="assets/Billinge-Beacon-Thumbnail.jpg" alt="" />
-            </li>
-            <li>
-                <img src="assets/Billinge-Beacon-Thumbnail.jpg" alt="" />
-            </li>
-            <li>
-                <img src="assets/Billinge-Beacon-Thumbnail.jpg" alt="" />
-            </li>
-        </ul>
-      </article>
-  </section>
-
-  <style>
-    .image-gallery {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-        padding-inline-start: 0px;
-    }
-
-    .image-gallery > li {
-        flex-basis: 250px; /* width: 350px; */
-        list-style: none;
-    }
-
-    .image-gallery li img {
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-        vertical-align: middle;
-        border-radius: 5px;
-    }
-  </style>
-
-  <div class="container">
-    <figure>
-        <img src="assets/Billinge-Beacon-Thumbnail.jpg" alt="" />
-        <figcaption>Hello</figcaption>
-    </figure>
-    <figure>
-        <img src="assets/Billinge-Beacon-Thumbnail.jpg" alt="" />
-        <figcaption>Hello</figcaption>
-    </figure>
-    <figure>
-        <img src="assets/Billinge-Beacon-Thumbnail.jpg" alt="" />
-        <figcaption>Hello</figcaption>
-    </figure>
-    <figure>
-        <img src="assets/Billinge-Beacon-Thumbnail.jpg" alt="" />
-        <figcaption>Hello</figcaption>
-    </figure>
-    <figure>
-        <img src="assets/Billinge-Beacon-Thumbnail.jpg" alt="" />
-        <figcaption>Hello</figcaption>
-    </figure>
-    <figure>
-        <img src="assets/Billinge-Beacon-Thumbnail.jpg" alt="" />
-        <figcaption>Hello</figcaption>
-    </figure>
-</div>
-
-<style>
-    .container {
-        display: flex;
-        max-width: 1200px;
-        width: 100%;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .container figure {
-        width: 250px;
-        height: 100%;
-        object-fit: cover;
-        padding: 5px;
-        margin: 0px;
-        text-align: center;
-    }
-
-    .container figure img {
-        border-radius: 5px;
-    }
-</style>

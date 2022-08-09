@@ -37,6 +37,24 @@
                 attribution: '© OpenStreetMap'
             }).addTo(map);
 
+            function onLocationFound(e) {
+                var radius = e.accuracy / 2;
+
+                var locationMarker = L.marker(e.latlng).addTo(map)
+                    .bindPopup('You are within ' + radius + ' meters from this point').openPopup();
+
+                var locationCircle = L.circle(e.latlng, radius).addTo(map);
+            }
+
+            function onLocationError(e) {
+                alert(e.message);
+            }
+
+            map.on('locationfound', onLocationFound);
+            map.on('locationerror', onLocationError);
+
+            map.locate({setView: true, maxZoom: 16});
+
             function onEachFeature(feature, layer) {
                 // does this feature have a property named popupContent?
                 if (feature.properties && feature.properties.popupContent) {
@@ -53,7 +71,7 @@
                     "category": "Significant Landmark",
                     "popupContent": "Tŵr Mawr lighthouse (meaning 'great tower' in Welsh), on Ynys Llanddwyn on Anglesey, Wales, marks the western entrance to the Menai Strait.",
                     "image": "assets/Twr-Mawr-Lighthouse-Thumnail.jpg",
-                    "link": "llanddwynlighthouse.html"
+                    "link": "twrmawrlighthouse.html"
                 },
                 "geometry": {
                     "type": "Point",
@@ -79,7 +97,7 @@
                     "category": "Public Land",
                     "popupContent": "With a maximum elevation of 179m (587 ft), it is the highest point of Merseyside. Billinge Hill was used by the Royal Observer Corps, and there was a bunker at the site, 60 yards (55 metres) west of and below the beacon.",
                     "image": "assets/Billinge-Hill-Thumbnail.jpg",
-                    "link": ""
+                    "link": "billingehill.html"
                 },
                 "geometry": {
                     "type": "Point",
@@ -92,7 +110,7 @@
                     "category": "Historical Landmark",
                     "popupContent": "On the highest point of Llanddwyn Island stands the huge St Dwynwen's cross. Dwnwen is the Welsh patron saint of lovers.",
                     "image": "assets/St-Dwynwens-Cross-Thumbnail.jpg",
-                    "link": ""
+                    "link": "stdwynwenscross.html"
                 },
                 "geometry": {
                     "type": "Point",
@@ -105,7 +123,7 @@
                     "category": "Historical Landmark",
                     "popupContent": "Dwynwen withdrew to a small tidal island off the southwest coast of Anglesey. There she built a church; which became known as Llanddwyn ('Church of Dwynwen'). Its remains can still be seen on Ynys Llanddwyn.",
                     "image": "assets/Eglwys-Santes-Dwynwen-Thumnail.jpg",
-                    "link": ""
+                    "link": "eglwyssantesdwynwen.html"
                 },
                 "geometry": {
                     "type": "Point",
@@ -118,7 +136,7 @@
                     "category": "Public Beach",
                     "popupContent": "Can be accessed by walking through Newborough Forest, which brings you out on top of the steep sandunes with views of Ynys Llanddwyn, Llanddwyn Beach and accross the Menai Strait to Snowdonia.",
                     "image": "assets/Penrhos-Beach-Thumbnail.jpg",
-                    "link": ""
+                    "link": "penrhosbeach.html"
                 },
                 "geometry": {
                     "type": "Point",
@@ -131,7 +149,7 @@
                     "category": "Public Beach",
                     "popupContent": "Renowned as one of the finest beaches in Britain, Llanddwyn is backed by, impressive sand dunes, and boasts spectacular views of Snowdonia National Park, Caemarfon and the Llyn Peninsula.",
                     "image": "assets/Llanddwyn-Beach-Thumbnail.jpg",
-                    "link": ""
+                    "link": "llanddwynbeach.html"
                 },
                 "geometry": {
                     "type": "Point",
@@ -144,7 +162,7 @@
                     "category": "Nature Reserve",
                     "popupContent": "Newborough Forest is a forest to the west of Newborough, Anglesey, North Wales. It is one of the most important red squirrel conservation sites in the United Kingdom. It can be accessed from the Carpark or the steep sandunes on the beach.",
                     "image": "assets/Newborough-Forest-Thumnail.jpg",
-                    "link": ""
+                    "link": "newboroughforest.html"
                 },
                 "geometry": {
                     "type": "Point",
@@ -157,7 +175,7 @@
                     "category": "Significant Landmark",
                     "popupContent": "Twr Bach Lighthouse (meaning 'little tower' in Welsh) is situated on a small island next to Llanddwyn Island which is joined by a small causeway. It is next to the old lifeboat station which remained in service until 1903.",
                     "image": "assets/Twr-Bach-Lighthouse-Thumnail.jpg",
-                    "link": ""
+                    "link": "twrbachlighthouse.html"
                 },
                 "geometry": {
                     "type": "Point",

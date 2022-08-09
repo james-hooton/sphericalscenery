@@ -1,3 +1,7 @@
+body {
+  max-width: 1000px;
+}
+
 header h1 {
   font-weight: bold;
 }
@@ -34,6 +38,34 @@ header h1 {
     text-align: center;
   }
 
+
+  .reccomendations {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.reccomendations figure {
+    width: 300px;
+    height: 100%;
+    object-fit: cover;
+    padding: 5px;
+    margin: 10px 10px 0px 0px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.reccomendations figure img {
+    border-radius: 5px;
+}
+
+.listview img{
+  border-radius: 5px;
+}
 /*--------Generic Classes--------*/
 
 .shadow {box-shadow: 0px 20px 20px -10px #4e4e4e;}
