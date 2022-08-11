@@ -16,64 +16,76 @@
   </header>
 
   <section class="search">
-      <input type="search" placeholder="Search for location" name="Search" id="Search">
+      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for locations" title="Type in a locaton">
       <button type="submit">Submit</button>
    </section>
-   <section>
-      <article class="listview">
-          <h3><a href="billingebeacon.html">Billinge Beacon</a></h3>
-          <p>The highest point in Merseyside. Views streching across Merseyside towards North Wales. You can easily see Anglesey on a clear day. The beacon itself was used for aircraft observation during and after the war.</p>
-          <a href="billingebeacon.html"><img src="assets/Billinge-Beacon-Thumbnail.jpg" alt=""></a>
-      </article>
-
-      <article class="listview">
-        <h3><a href="stdwynwenscross.html">St Dwynwen’s Cross</a></h3>
-        <p>The highest point in Merseyside. Views streching across Merseyside towards North Wales. You can easily see Anglesey on a clear day. The beacon itself was used for aircraft observation during and after the war.</p>
-        <a href="stdwynwenscross.html"><img src="assets/St-Dwynwens-Cross-Thumbnail.jpg" alt=""></a>
-    </article>
-
-    <article class="listview">
+   
+  <ul class="listview" id="myUL">
+    <li>
+      <h3><a href="billingebeacon.html">Billinge Beacon</a></h3>
+      <p>The highest point in Merseyside. Views streching across Merseyside towards North Wales. You can easily see Anglesey on a clear day. The beacon itself was used for aircraft observation during and after the war.</p>
+      <a href="billingebeacon.html"><img src="assets/Billinge-Beacon-Thumbnail.jpg" alt=""></a>
+    </li>
+    <li>
+      <h3><a href="stdwynwenscross.html">St Dwynwen’s Cross</a></h3>
+      <p>The highest point in Merseyside. Views streching across Merseyside towards North Wales. You can easily see Anglesey on a clear day. The beacon itself was used for aircraft observation during and after the war.</p>
+      <a href="stdwynwenscross.html"><img src="assets/St-Dwynwens-Cross-Thumbnail.jpg" alt=""></a>
+    </li>
+    <li>
         <h3><a href="twrmawrlighthouse.html">Twr Mawr Lighthouse</a></h3>
         <p>Tŵr Mawr lighthouse (meaning 'great tower' in Welsh), on Ynys Llanddwyn on Anglesey, Wales, marks the western entrance to the Menai Strait.</p>
         <a href="twrmawrlighthouse.html"><img src="assets/Twr-Mawr-Lighthouse-Thumnail.jpg" alt=""></a>
-    </article>
-
-    <article class="listview">
+    </li>
+    <li>
         <h3><a href="twrbachlighthouse.html">Tŵr Bach Lighthouse</a></h3>
         <p>Twr Bach Lighthouse (meaning 'little tower' in Welsh) is situated on a small island next to Llanddwyn Island which is joined by a small causeway. It is next to the old lifeboat station which remained in service until 1903.</p>
         <a href="twrbachlighthouse.html"><img src="assets/Twr-Bach-Lighthouse-Thumnail.jpg" alt=""></a>
-    </article>
-
-    <article class="listview">
+    </li>
+    <li>
         <h3><a href="penrhosbeach.html">Penrhos Beach</a></h3>
         <p>Can be accessed by walking through Newborough Forest, which brings you out on top of the steep sandunes with views of Ynys Llanddwyn, Llanddwyn Beach and accross the Menai Strait to Snowdonia.</p>
         <a href="penrhosbeach.html"><img src="assets/Penrhos-Beach-Thumbnail.jpg" alt=""></a>
-    </article>
-
-    <article class="listview">
+    </li>
+    <li>
         <h3><a href="eglwyssantesdwynwen.html">Eglwys Santes Dwynwen</a></h3>
         <p>Dwynwen withdrew to a small tidal island off the southwest coast of Anglesey. There she built a church; which became known as Llanddwyn ('Church of Dwynwen'). Its remains can still be seen on Ynys Llanddwyn.</p>
         <a href="eglwyssantesdwynwen.html"><img src="assets/Eglwys-Santes-Dwynwen-Thumnail.jpg" alt=""></a>
-    </article>
-
-    <article class="listview">
+    </li>
+    <li>
         <h3><a href="llanddwynbeach.html">Llanddwyn Beach</a></h3>
         <p>Renowned as one of the finest beaches in Britain, Llanddwyn is backed by, impressive sand dunes, and boasts spectacular views of Snowdonia National Park, Caemarfon and the Llyn Peninsula.</p>
         <a href="llanddwynbeach.html"><img src="assets/Llanddwyn-Beach-Thumbnail.jpg" alt=""></a>
-    </article>
-
-    <article class="listview">
+    </li>
+    <li>
         <h3><a href="newboroughforest.html">Newborough Forest</a></h3>
         <p>Newborough Forest is a forest to the west of Newborough, Anglesey, North Wales. It is one of the most important red squirrel conservation sites in the United Kingdom. It can be accessed from the Carpark or the steep sandunes on the beach.</p>
         <a href="newboroughforest.html"><img src="assets/Newborough-Forest-Thumnail.jpg" alt=""></a>
-    </article>
-
-    <article class="listview">
+    </li>
+    <li>
         <h3><a href="billingehill.html">Billinge Hill</a></h3>
         <p>With a maximum elevation of 179m (587 ft), it is the highest point of Merseyside. Billinge Hill was used by the Royal Observer Corps, and there was a bunker at the site, 60 yards (55 metres) west of and below the beacon.</p>
         <a href="billingehill.html"><img src="assets/Billinge-Hill-Thumbnail.jpg" alt=""></a>
-    </article>
-  </section>
+    </li>
+  </ul>
+  
+  <script>
+  function myFunction() {
+      var input, filter, ul, li, a, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      ul = document.getElementById("myUL");
+      li = ul.getElementsByTagName("li");
+      for (i = 0; i < li.length; i++) {
+          a = li[i].getElementsByTagName("a")[0];
+          txtValue = a.textContent || a.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              li[i].style.display = "";
+          } else {
+              li[i].style.display = "none";
+          }
+      }
+  }
+  </script>
 
 <footer>
     © Spherical Scenery 2022 | <a href="jameshooton.com">James Hooton Media</a>
