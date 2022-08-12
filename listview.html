@@ -28,7 +28,7 @@
     </li>
     <li>
       <h3><a href="stdwynwenscross.html">St Dwynwen’s Cross</a></h3>
-      <p>The highest point in Merseyside. Views streching across Merseyside towards North Wales. You can easily see Anglesey on a clear day. The beacon itself was used for aircraft observation during and after the war.</p>
+      <p>On the highest point of Llanddwyn Island stands the huge St Dwynwen's cross. Dwnwen is the Welsh patron saint of lovers.</p>
       <a href="stdwynwenscross.html"><img src="assets/St-Dwynwens-Cross-Thumbnail.jpg" alt=""></a>
     </li>
     <li>
@@ -43,7 +43,7 @@
     </li>
     <li>
         <h3><a href="penrhosbeach.html">Penrhos Beach</a></h3>
-        <p>Can be accessed by walking through Newborough Forest, which brings you out on top of the steep sandunes with views of Ynys Llanddwyn, Llanddwyn Beach and accross the Menai Strait to Snowdonia.</p>
+        <p>Can be accessed by walking through Newborough Forest, which brings you out on top of the steep sand dunes with views of Ynys Llanddwyn, Llanddwyn Beach and accross the Menai Strait to Snowdonia.</p>
         <a href="penrhosbeach.html"><img src="assets/Penrhos-Beach-Thumbnail.jpg" alt=""></a>
     </li>
     <li>
@@ -70,14 +70,16 @@
   
   <script>
   function myFunction() {
-      var input, filter, ul, li, a, i, txtValue;
+      var input, filter, ul, li, a, i, p, txtValue;
       input = document.getElementById("myInput");
       filter = input.value.toUpperCase();
       ul = document.getElementById("myUL");
       li = ul.getElementsByTagName("li");
       for (i = 0; i < li.length; i++) {
           a = li[i].getElementsByTagName("a")[0];
+          p = li[i].getElementsByTagName("p")[0];
           txtValue = a.textContent || a.innerText;
+          txtValue = p.textContent || p.innerText;
           if (txtValue.toUpperCase().indexOf(filter) > -1) {
               li[i].style.display = "";
           } else {
