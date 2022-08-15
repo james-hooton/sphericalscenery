@@ -40,23 +40,39 @@
                 attribution: '© OpenStreetMap'
             }).addTo(map);
 
-            function onLocationFound(e) {
-                var radius = e.accuracy / 2;
-
-                var locationMarker = L.marker(e.latlng).addTo(map)
-                    .bindPopup('You are within ' + radius + ' meters from this point').openPopup();
-
-                var locationCircle = L.circle(e.latlng, radius).addTo(map);
+                        if(!navigator.geolocation) {
+                console.log("Your browser doesn't support geolocation feature!")
+            } else {
+                setInterval(() => {
+                    navigator.geolocation.getCurrentPosition(getPosition)
+                }, 5000);
             }
 
-            function onLocationError(e) {
-                alert(e.message);
+            var marker, circle;
+
+            function getPosition(position){
+                // console.log(position)
+                var lat = position.coords.latitude
+                var long = position.coords.longitude
+                var accuracy = position.coords.accuracy
+
+                if(marker) {
+                    map.removeLayer(marker)
+                }
+
+                if(circle) {
+                    map.removeLayer(circle)
+                }
+
+                marker = L.marker([lat, long])
+                circle = L.circle([lat, long], {radius: accuracy})
+
+                var featureGroup = L.featureGroup([marker, circle]).addTo(map)
+
+                map.fitBounds(featureGroup.getBounds())
+
+                console.log("Your coordinate is: Lat: "+ lat +" Long: "+ long+ " Accuracy: "+ accuracy)
             }
-
-            map.on('locationfound', onLocationFound);
-            map.on('locationerror', onLocationError);
-
-            map.locate({setView: true, maxZoom: 16});
 
             function onEachFeature(feature, layer) {
                 // does this feature have a property named popupContent?
