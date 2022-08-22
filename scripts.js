@@ -8,3 +8,13 @@ if (time < 12) {
   greeting = "Good evening 🌃";
 }
 document.getElementById("demo").innerHTML = greeting;
+
+// Toggle Switch
+
+function toggleCheck() {
+  if(document.getElementById("myCheckbox").checked === true){
+    map.fitBounds(featureGroup.getBounds())
+  } else {
+    map.locate({setView: true, maxZoom: 16});
+  }
+}

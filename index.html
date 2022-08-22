@@ -28,6 +28,10 @@
         <button type="button" onclick="explore()">Find and free roam</button>
         <button type="button" onclick="followMe()">Find and follow me</button>
         <script src="scripts.js"></script>
+        <label class="switch">
+            <input type="checkbox" id="myCheckbox" onchange="toggleCheck()" checked>
+            <span class="slider round"></span>
+        </label>
         <div id="map" class="map shadow rounded"></div>
         <script>
             var map = L.map('map', {
@@ -42,7 +46,6 @@
                 attribution: '© OpenStreetMap'
             }).addTo(map);
 
-            function followMe() {
                    if(!navigator.geolocation) {
                 console.log("Your browser doesn't support geolocation feature!")
             } else {
@@ -76,28 +79,6 @@
 
                 console.log("Your coordinate is: Lat: "+ lat +" Long: "+ long+ " Accuracy: "+ accuracy)
             };
-            }
-
-            function explore() {
-                function onLocationFound(e) {
-                var radius = e.accuracy / 2;
-
-                var locationMarker = L.marker(e.latlng).addTo(map)
-                    .bindPopup('You are within ' + radius + ' meters from this point').openPopup();
-
-                var locationCircle = L.circle(e.latlng, radius).addTo(map);
-                }
-
-                function onLocationError(e) {
-                    alert(e.message);
-                }
-
-                map.on('locationfound', onLocationFound);
-                map.on('locationerror', onLocationError);
-
-                map.locate({setView: true, maxZoom: 16});
-                clearInterval(interval);
-            }
 
             function onEachFeature(feature, layer) {
                 // does this feature have a property named popupContent?
