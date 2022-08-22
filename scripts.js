@@ -12,11 +12,13 @@ document.getElementById("demo").innerHTML = greeting;
 // Toggle Switch
 
 function toggleCheck() {
-  if(document.getElementById("myCheckbox").checked === true){
-    interval = setInterval(() => {
-      map.fitBounds(featureGroup.getBounds())
-  }, 1000);
+    if(document.getElementById("myCheckbox").checked === false){
+      setInterval(function(){ 
+        map.fitBounds(featureGroup.getBounds())
+    }, 1000);
   } else {
     map.locate({setView: true, maxZoom: 16});
   }
 }
+
+setInterval(toggleCheck, 1000);
