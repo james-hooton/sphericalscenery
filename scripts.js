@@ -13,7 +13,9 @@ document.getElementById("demo").innerHTML = greeting;
 
 function toggleCheck() {
   if(document.getElementById("myCheckbox").checked === true){
-    map.fitBounds(featureGroup.getBounds())
+    interval = setInterval(() => {
+      map.fitBounds(featureGroup.getBounds())
+  }, 1000);
   } else {
     map.locate({setView: true, maxZoom: 16});
   }
