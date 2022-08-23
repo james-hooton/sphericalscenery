@@ -22,10 +22,37 @@
     <header>
         <h1><a href="index.html">Spherical Scenery °</a></h1>
         <hr>
+        <h2 class="time" id="demo"></h2>
+        <script src="scripts.js"></script>
     </header>
     <main>
-        <h2 id="demo"></h2><p>Take in your surroundings. Where are you exploring today?</p>
-        <script src="scripts.js"></script>
+        <div id="ytplayer" class="shadow rounded mainheader"></div>
+    <script>
+      // Load the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+      tag.src = "https://www.youtube.com/player_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    
+      // Replace the 'ytplayer' element with an <iframe> and
+      // YouTube player after the API code downloads.
+      var player;
+      function onYouTubePlayerAPIReady() {
+        player = new YT.Player('ytplayer', {
+          height: '300',
+          width: '100%',
+          videoId: '4IOlDFluVQ8',
+          playerVars: {
+            'autoplay': 1,
+            'color': 'white',
+            'controls': 0,
+            'loop': 1,
+            'playlist': '4IOlDFluVQ8',
+            'mute': 1
+          }
+        });
+      }
+    </script>
         <h3>Stick map to my location?</h3>
         <label class="switch">
             <input type="checkbox" id="myCheckbox" onchange="toggleCheck()" checked>
@@ -216,9 +243,14 @@
         map.addLayer(markers);
         
         </script>
-        <h2>Prefer lists?</h2>
-        <p>Maps get you to places, but lists are useful too</p>
-        <button type="button" onclick="window.location.href='listview.html'">List view</button>
+
+        <section class="parallax">
+            <div class="centeredlist">
+                <h2>Prefer lists?</h2>
+                <p>Maps get you to places, but lists are useful too</p>
+                <button type="button" onclick="window.location.href='listview.html'">List view</button>
+            </div>
+        </section>
     </main>
     <footer>
         © Spherical Scenery 2022 | <a href="jameshooton.com">James Hooton Media</a>
