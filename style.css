@@ -144,6 +144,17 @@ input:checked+.slider:before {
   transform: translateX(26px);
 }
 
+.locationtoggle{
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  padding: 10px 0px 10px 0px;
+}
+
+.locationtoggle h3 {
+  margin: 0px 10px 0px 0px;
+  line-height: 35px;
+}
 
 /* Rounded sliders */
 
