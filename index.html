@@ -20,12 +20,15 @@
 
 <body>
     <header>
-        <h1><a href="index.html">Spherical Scenery °</a></h1>
+        <nav>
+            <h1><a href="index.html">Spherical Scenery °</a></h1>
+            <h1 class="homemap"><a href="index.html">🗺</a></h1>
+        </nav>
         <hr>
-        <h2 class="time" id="demo"></h2>
-        <script src="scripts.js"></script>
     </header>
     <main>
+        <h2 class="time" id="demo"></h2>
+        <script src="scripts.js"></script>
         <div id="ytplayer" class="shadow rounded mainheader"></div>
     <script>
       // Load the IFrame Player API code asynchronously.
@@ -53,6 +56,7 @@
         });
       }
     </script>
+        <h2 class="mapintro">Explore</h2>
         <section class="locationtoggle">
             <h3>Stick map to my location?</h3>
             <label class="switch">
@@ -68,18 +72,20 @@
                     title:"Enter immersive map view",
                     titleCancel:"Exit immerisve map view"
 			}
-            }).setView([53.507970, -2.718769], 13);
+            }).setView([54.056284, -1.855477], 6);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
                 attribution: '© OpenStreetMap'
             }).addTo(map);
 
-                   if(!navigator.geolocation) {
-                console.log("Your browser doesn't support geolocation feature!")
-            } else {
-                interval = setInterval(() => {
-                    navigator.geolocation.getCurrentPosition(getPosition)
-                }, 1000);
+            function getLocation() {
+                    if(!navigator.geolocation) {
+                    console.log("Your browser doesn't support geolocation feature!")
+                } else {
+                    interval = setInterval(() => {
+                        navigator.geolocation.getCurrentPosition(getPosition)
+                    }, 0001);
+                }
             }
 
             var marker, circle;
@@ -105,6 +111,13 @@
 
                 console.log("Your coordinate is: Lat: "+ lat +" Long: "+ long+ " Accuracy: "+ accuracy)
             };
+
+            var popup = L.popup()
+                .setLatLng(map.getBounds().getCenter())
+                .setContent(
+                    '<h3 class="mapintrohead">Welcome to Spherical Scenery</h3> <p class="mapintro">Enable location tracking in your browser and touch and drag the map to discover scenic areas near you, captured in 360 video with immersive audio. <br><br> Unstick the map from your current locaton to find sceneric areas further afield.</p><button onclick="getLocation();getToggle()">Get my locaton</button>'
+                    )
+                .openOn(map);
 
             function onEachFeature(feature, layer) {
                 // does this feature have a property named popupContent?

@@ -21,4 +21,6 @@ function toggleCheck() {
   }
 }
 
-setInterval(toggleCheck, 1000);
+function getToggle () {
+  setInterval(toggleCheck, 1000);
+}
