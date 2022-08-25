@@ -15,8 +15,12 @@ header h1 {
   font-size: 2.5rem;
 }
 
-.homemap {
-  font-size:50px;
+.home {
+  color: #0076d1;
+}
+
+.home:hover {
+  color: #014f8b;
 }
 
 .homemap a {
@@ -27,6 +31,8 @@ header nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  line-height: 0px;
+  padding-bottom: 10px;
 }
  
 .map { height: 500px; }
@@ -44,6 +50,19 @@ header nav {
     border-style: solid;
     border-color: #d4d4d4;
     border-width: 3px;
+  }
+
+  .sensorybox ul {
+    columns: 10px 2;
+    -webkit-columns: 10px 2;
+    -moz-columns:10px 2;
+    column-gap: 0px;
+    -webkit-column-gap: 0;
+    -moz-column-gap: 0;
+    list-style: none;
+    padding-left: 0px;
+    max-width: 700px;
+    line-height: 200%;
   }
 
   .reccomended img{
