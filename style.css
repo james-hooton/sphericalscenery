@@ -65,6 +65,10 @@ header nav {
     line-height: 200%;
   }
 
+  .sensorybox ul li:hover {
+    font-size: larger;
+  }
+
   .reccomended img{
     border-radius: 10px;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
@@ -91,11 +95,11 @@ header nav {
 }
 
 .reccomendations figure {
-    width: 300px;
+    width: 305px;
     height: 100%;
     object-fit: cover;
     padding: 5px;
-    margin: 10px 10px 0px 0px;
+    margin: 0px 18px 18px 0px;
     text-align: center;
     font-weight: bold;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
